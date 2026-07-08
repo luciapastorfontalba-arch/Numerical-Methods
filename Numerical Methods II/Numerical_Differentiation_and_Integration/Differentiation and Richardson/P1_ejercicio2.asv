@@ -1,0 +1,13 @@
+
+clc
+clear all
+format long
+
+
+g = @(t) t.*cos(2.*t+9)
+
+% queremos aproximar a g''(0) sin Richardson
+
+gprima = d1o2(g,0,1/10)
+
+% aproximar con Richarson

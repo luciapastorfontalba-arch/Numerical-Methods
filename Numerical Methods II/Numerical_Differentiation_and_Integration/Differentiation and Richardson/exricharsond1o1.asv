@@ -1,0 +1,27 @@
+function g= exricharsond1o1(f,c,k,t,h)
+%f función
+%c punto al que aprox
+%k número de iteraciones
+%t es el valor de tau
+% h es el paso
+%g es la matriz de Richardson de tamaño k+1xk+1
+
+g = zeros(k + 1, k + 1); % Initialize the Richardson matrix
+
+for i=1:k+1
+
+    g(i,1)= d1o1(f,c,h/t.^(i-1))
+
+
+end
+
+p=[1:k]  %exponentes del desarrollo
+
+for i =2:k+1 % m columnas y j las filas
+    
+    for n =i:k+1
+          g(n,i)= (t.^(p(i))*g(n,i-1)-g(n-1, i-1))% depende de g(n,i-1) y además g(n-1, i-1)
+
+    end
+
+end
